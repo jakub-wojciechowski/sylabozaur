@@ -1,4 +1,6 @@
-# sylaby
+# Sylabozaur
+
+Gra ucząca czytać metodą sylabową.
 
 ## Project setup
 ```

@@ -14,9 +14,10 @@
 
 
 
-        <div class="md-layout word" >
+        <div class="md-layout word">
             <div class="md-layout-item part" :class="{'highlighted': gameState.activePart == 0 }">{{ gameState.parts[0] }}</div>
             <div class="md-layout-item part" :class="{'highlighted': gameState.activePart == 1 }">{{ gameState.parts[1] }}</div>
+            <md-button class="md-raised md-accent clear" :md-ripple="false" @click="clear"></md-button>
         </div>
 
 
@@ -50,7 +51,7 @@
     }
 
     .word {
-        width: 150px;
+        width: 200px;
         height: 30px;
         margin: 0 auto;
     }
@@ -77,6 +78,11 @@
         width: 300px;
         margin-bottom: 20px;
     }
+
+    .clear {
+        width: 36px!important;
+        min-width: unset!important;
+    }
 </style>
 
 
@@ -96,7 +102,8 @@
     methods: {
       next: function() {
         game.next();
-      }
+      },
+      clear: () => { game.clear() }
     },
     data: function () {
       return {

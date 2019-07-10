@@ -41,6 +41,11 @@ export const game = {
     this.state.activePart++;
   },
 
+  clear() {
+    this.state.parts = ['', ''];
+    this.state.activePart = 0;
+  },
+
   reset() {
     console.log("RESET");
     this.state.activePart = 0;

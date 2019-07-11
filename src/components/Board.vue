@@ -2,12 +2,22 @@
 
     <div>
 
+
+
+        <div class="md-layout word score-board">
+            <img class="cake" src="../assets/images/cake.png"/>
+
+            <md-button class="md-icon-button md-accent md-raised">
+                {{gameState.score}}
+            </md-button>
+            <img class="cake" src="../assets/images/cake.png"/>
+        </div>
+
         <div class="score">
         <div v-for="i in gameState.score" class="diplo">
             <img src="../assets/diplodocus.png"/>
         </div>
         </div>
-
         <div>
             <img :src="gameState.image" class="picture"/>
         </div>
@@ -15,9 +25,18 @@
 
 
         <div class="md-layout word">
+
+            <md-button class="md-icon-button md-raised md-accent" @click="clear">
+                <md-icon>delete_forever</md-icon>
+            </md-button>
+
             <div class="md-layout-item part" :class="{'highlighted': gameState.activePart == 0 }">{{ gameState.parts[0] }}</div>
             <div class="md-layout-item part" :class="{'highlighted': gameState.activePart == 1 }">{{ gameState.parts[1] }}</div>
-            <md-button class="md-raised md-accent clear" :md-ripple="false" @click="clear"></md-button>
+
+            <md-button class="md-icon-button md-raised md-primary" @click="next" :disabled="gameState.disabled">
+                <md-icon>play_arrow</md-icon>
+            </md-button>
+
         </div>
 
 
@@ -31,12 +50,6 @@
             <Selector class="md-raised" :value="gameState.selectors[4]"></Selector>
             <Selector class="md-raised" :value="gameState.selectors[5]"></Selector>
         </div>
-
-        <div>
-            <md-button class="md-raised md-primary" @click="next" :disabled="gameState.disabled">DALEJ</md-button>
-        </div>
-
-
     </div>
 
 
@@ -51,7 +64,7 @@
     }
 
     .word {
-        width: 200px;
+        width: 240px;
         height: 30px;
         margin: 0 auto;
     }
@@ -69,7 +82,7 @@
     }
 
     .score {
-        width: 300px;
+        width: 320px;
         margin: auto;
         height: 60px;
     }
@@ -82,6 +95,15 @@
     .clear {
         width: 36px!important;
         min-width: unset!important;
+    }
+
+    .cake {
+        width: 32px;
+    }
+
+    .score-board {
+        width: 120px;
+        height: 50px;
     }
 </style>
 

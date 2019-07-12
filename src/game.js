@@ -8,7 +8,10 @@ const words = [
   ['DA', 'MA'],
   ['LA', 'LA'],
   ['KO', 'KO'],
-  ['GA', 'MA']
+  ['GA', 'MA'],
+  ['LA', 'MA'],
+  ['DA', 'TA'],
+  ['GA', 'LA']
 ];
 
 const availableSelectors = ['TA', 'MA', 'DA', 'KO', 'LA', 'GA'];

@@ -31,7 +31,7 @@ export const game = {
     parts: ['', ''],
     selectors: [],
     word: [],
-    score: 0,
+    score: 11,
     disabled: false
   },
 
@@ -44,6 +44,10 @@ export const game = {
   clear() {
     this.state.parts = ['', ''];
     this.state.activePart = 0;
+  },
+
+  playAgain() {
+    play(this.state.word, 0);
   },
 
   reset() {
@@ -71,7 +75,7 @@ export const game = {
     }
 
     setTimeout(this.reset.bind(this), 2000);
-
   }
-
 };
+
+game.reset();

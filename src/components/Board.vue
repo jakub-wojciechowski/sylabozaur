@@ -1,54 +1,61 @@
 <template>
 
-    <div>
+    <div class="wrapper">
+        <div class="centered-panel">
 
 
+            <div class="md-layout word score-board">
+                <img class="cake" src="../assets/images/cake.png"/>
 
-        <div class="md-layout word score-board">
-            <img class="cake" src="../assets/images/cake.png"/>
-
-            <md-button class="md-icon-button md-accent md-raised">
-                {{gameState.score}}
-            </md-button>
-            <img class="cake" src="../assets/images/cake.png"/>
-        </div>
-
-        <div class="score">
-        <div v-for="i in gameState.score" class="diplo">
-            <img src="../assets/diplodocus.png"/>
-        </div>
-        </div>
-        <div>
-            <img :src="gameState.image" class="picture"/>
-        </div>
+                <md-button class="md-icon-button md-accent md-raised">
+                    {{gameState.score}}
+                </md-button>
+                <img class="cake" src="../assets/images/cake.png"/>
+            </div>
 
 
-
-        <div class="md-layout word">
-
-            <md-button class="md-icon-button md-raised md-accent" @click="clear">
-                <md-icon>delete_forever</md-icon>
-            </md-button>
-
-            <div class="md-layout-item part" :class="{'highlighted': gameState.activePart == 0 }">{{ gameState.parts[0] }}</div>
-            <div class="md-layout-item part" :class="{'highlighted': gameState.activePart == 1 }">{{ gameState.parts[1] }}</div>
-
-            <md-button class="md-icon-button md-raised md-primary" @click="next" :disabled="gameState.disabled">
-                <md-icon>play_arrow</md-icon>
-            </md-button>
-
-        </div>
+            <div class="diplo-score">
+                <div v-for="i in gameState.score" class="diplo">
+                    <img src="../assets/diplodocus.png"/>
+                </div>
+            </div>
 
 
-        <div class="selection">
-            <Selector class="md-raised" :value="gameState.selectors[0]"></Selector>
-            <Selector class="md-raised" :value="gameState.selectors[1]"></Selector>
-            <Selector class="md-raised" :value="gameState.selectors[2]"></Selector>
-        </div>
-        <div>
-            <Selector class="md-raised" :value="gameState.selectors[3]"></Selector>
-            <Selector class="md-raised" :value="gameState.selectors[4]"></Selector>
-            <Selector class="md-raised" :value="gameState.selectors[5]"></Selector>
+            <div>
+                <img :src="gameState.image" class="picture" @click="playSound"/>
+            </div>
+
+
+            <div class="md-layout word">
+
+                <md-button class="md-icon-button md-raised md-accent" @click="clear">
+                    <md-icon>delete_forever</md-icon>
+                </md-button>
+
+                <div class="md-layout-item part" :class="{'highlighted': gameState.activePart == 0 }">{{
+                    gameState.parts[0] }}
+                </div>
+                <div class="md-layout-item part" :class="{'highlighted': gameState.activePart == 1 }">{{
+                    gameState.parts[1] }}
+                </div>
+
+                <md-button class="md-icon-button md-raised md-primary" @click="next" :disabled="gameState.disabled">
+                    <md-icon>play_arrow</md-icon>
+                </md-button>
+
+            </div>
+
+
+            <div class="selection">
+                <Selector class="md-raised" :value="gameState.selectors[0]"></Selector>
+                <Selector class="md-raised" :value="gameState.selectors[1]"></Selector>
+                <Selector class="md-raised" :value="gameState.selectors[2]"></Selector>
+            </div>
+            <div>
+                <Selector class="md-raised" :value="gameState.selectors[3]"></Selector>
+                <Selector class="md-raised" :value="gameState.selectors[4]"></Selector>
+                <Selector class="md-raised" :value="gameState.selectors[5]"></Selector>
+            </div>
         </div>
     </div>
 
@@ -81,20 +88,21 @@
         float: left;
     }
 
-    .score {
+    .diplo-score {
         width: 320px;
         margin: auto;
-        height: 60px;
+        min-height: 60px;
     }
 
     .picture {
         width: 300px;
         margin-bottom: 20px;
+        cursor: pointer;
     }
 
     .clear {
-        width: 36px!important;
-        min-width: unset!important;
+        width: 36px !important;
+        min-width: unset !important;
     }
 
     .cake {
@@ -105,15 +113,24 @@
         width: 120px;
         height: 50px;
     }
+
+    .wrapper {
+        width: 100%;
+        text-align: center;
+    }
+
+    .centered-panel {
+        display: inline-block;
+    }
+
+
 </style>
 
 
 <script>
 
   import Selector from "../components/Selector.vue";
-  import { game } from "../game.js";
-
-
+  import {game} from "../game.js";
 
 
   export default {
@@ -122,10 +139,15 @@
       Selector
     },
     methods: {
-      next: function() {
+      next: function () {
         game.next();
       },
-      clear: () => { game.clear() }
+      clear: () => {
+        game.clear()
+      },
+      playSound: () => {
+        game.playAgain()
+      }
     },
     data: function () {
       return {

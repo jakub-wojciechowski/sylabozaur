@@ -34,7 +34,7 @@ export const game = {
     parts: ['', ''],
     selectors: [],
     word: [],
-    score: 11,
+    score: 0,
     disabled: false
   },
 

@@ -15,8 +15,8 @@
     "vue-underscore": "^0.1.4"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.9.0",
-    "@vue/cli-service": "^3.9.0",
+    "@vue/cli-plugin-babel": "^5.0.8",
+    "@vue/cli-service": "^5.0.8",
     "node-sass": "^4.12.0",
     "vue-template-compiler": "^2.6.10"
   },
